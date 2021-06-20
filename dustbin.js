@@ -13,7 +13,7 @@ class Dustbin
         this.body = Bodies.rectangle(x, y, width, height, options);
         this.width = width;
         this.height = height;
-        //this.image = loadImage("sprites/dustbine.png")
+        this.image = loadImage("dustbine.png");
         World.add(world, this.body);
     }
 
@@ -23,9 +23,9 @@ class Dustbin
           push();
           translate(this.body.position.x, this.body.position.y);
           rotate(angle);
-          rectMode(CENTER);
+          imageMode(CENTER);
           fill(100,80,900);
-          rect(0,0,this.width,this.height);
+          image(this.image,0,0,this.width,this.height);
           pop();
       }
 }
