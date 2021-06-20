@@ -7,7 +7,8 @@ const Render = Matter.Render;
 
 var engine;
 var paper;
-var dustbin1,dustbin2,dustbin3;
+var base,leftWall,rightWall,centerD;
+var dustbineImage;
 var ground;
 
 
@@ -18,11 +19,11 @@ function setup()
 	world = engine.world;
 	Engine.run(engine);
 
-  dustbin1 = new Dustbin(1000,470,250,20);
-  dustbin2 = new Dustbin(870,400,20,163);
-  dustbin3 = new Dustbin(1130,400,20,163);
-  ground = new Ground(400,600,1900,15);
-  paper = new Paper(60,520,15,15,70);
+  base = new Dustbin(1000,470,200,20);
+  leftWall = new Dustbin(890,400,20,163);
+  rightWall = new Dustbin(1100,400,20,163);
+  ground = new Ground(400,600,200000000000,15);
+  paper = new Paper(60,590,35,35,70);
 }
 
 
@@ -30,11 +31,13 @@ function draw()
 {
     rectMode(CENTER);
     imageMode(CENTER);
-    background(0,0,0);
+    background("black");
   
-    dustbin1.display();
-    dustbin2.display();
-    dustbin3.display();
+    
+
+    base.display();
+    leftWall.display();
+    rightWall.display();
     ground.display();
     paper.display();
 
@@ -45,7 +48,12 @@ function keyPressed()
 {
     if(keyCode=== UP_ARROW)
     {
-      Matter.Body.applyForce(paper.body,paper.body.position,{x:45,y:-45});
+      Matter.Body.applyForce(paper.body,paper.body.position,{x:35,y:-35});
+    }
+
+    if(keyCode=== DOWN_ARROW)
+    {
+      Matter.Body.applyForce(paper.body,paper.body.position,{x:-35,y:-35});
     }
   
 }
